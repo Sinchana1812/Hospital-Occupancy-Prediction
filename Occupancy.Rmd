@@ -1,0 +1,71 @@
+---
+title: "Occupancy_based_plots"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+```
+
+#All Years Check
+##Occupancy Weekly Check
+
+```{r}
+ggplot(data_AY_a,aes(x=WeekDay,y=Occupancy,colour=Year,group=Year)) +
+   geom_point(size = 2) + geom_path(size=1)+
+scale_y_continuous(limits = c(90, 350), expand = c(0, 0),breaks=seq(90, 350,by=30)) + 
+  theme_minimal()+
+  theme(plot.margin = margin(20, 7, 3, 1.5),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      vjust = 1,
+         size = 8),
+    axis.title.x =element_blank(),
+    axis.title.y=element_text(margin = margin(t = 0, r = 10, b = 0, l = 0),size=8.5,face="bold"))
+ggsave("Occupancy_Weekly.png")
+```
+
+##Occupancy Monthly Check(2005-2014)
+
+```{r}
+ggplot(data_AY_a,aes(x=Month,y=Occupancy,colour=Year,group=Year)) +
+   geom_point(size = 2) + geom_path(size=1)+
+scale_y_continuous(limits = c(50, 300), expand = c(0, 0),breaks=seq(50, 300,by=40)) + 
+  theme_minimal()+
+  theme(plot.margin = margin(20, 7, 3, 1.5),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      vjust = 1,
+         size = 8),
+    axis.title.x =element_blank(),
+    axis.title.y=element_text(margin = margin(t = 0, r = 10, b = 0, l = 0),size=8.5,face="bold"))
+ggsave("Occupancy_Monthly.png")
+```
+
+```{r}
+ggplot(data,aes(x=Date,y=Occupancy,group=1)) +
+   geom_point(size = 2) + geom_path(size=1)+
+scale_y_continuous(limits = c(50, 300), expand = c(0, 0),breaks=seq(50, 300,by=40)) + 
+  theme_minimal()+
+  theme(plot.margin = margin(20, 7, 3, 1.5),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      vjust = 1,
+         size = 8),
+    axis.title.x =element_blank(),
+    axis.title.y=element_text(margin = margin(t = 0, r = 10, b = 0, l = 0),size=8.5,face="bold"))
+```
+
